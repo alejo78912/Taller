@@ -1,0 +1,64 @@
+<div class="container">
+  <h1>Agregar Reserva</h1>
+  <form [formGroup]="nuevaReservaForm">
+    <div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" id="id" formControlName="id" class="form-control">
+      <div *ngIf="nuevaReservaForm.get('id')?.touched && nuevaReservaForm.get('id')?.hasError('required')" class="text-danger">
+        El ID es obligatorio.
+      </div>
+      <div *ngIf="nuevaReservaForm.get('id')?.touched && nuevaReservaForm.get('id')?.hasError('pattern')" class="text-danger">
+        El ID debe ser un número entero.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre y Apellidos:</label>
+      <input type="text" id="nombre" formControlName="nombre" class="form-control">
+      <div *ngIf="nuevaReservaForm.get('nombre')?.touched && nuevaReservaForm.get('nombre')?.hasError('required')" class="text-danger">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+      <div *ngIf="nuevaReservaForm.get('email')?.touched && nuevaReservaForm.get('email')?.hasError('required')" class="text-danger">
+        El email es obligatorio.
+      </div>
+      <div *ngIf="nuevaReservaForm.get('email')?.touched && nuevaReservaForm.get('email')?.hasError('email')" class="text-danger">
+        El email no es válido.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="tipoCliente">Tipo Cliente:</label>
+      <select id="tipoCliente" formControlName="tipoCliente" class="form-control">
+        <option value="VIP">VIP</option>
+        <option value="Socio">Socio</option>
+        <option value="No Socio">No Socio</option>
+      </select>
+      <div *ngIf="nuevaReservaForm.get('tipoCliente')?.touched && nuevaReservaForm.get('tipoCliente')?.hasError('required')" class="text-danger">
+        El tipo de cliente es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaLlegada">Fecha de Llegada:</label>
+      <input type="date" id="fechaLlegada" formControlName="fechaLlegada" class="form-control">
+      <div *ngIf="nuevaReservaForm.get('fechaLlegada')?.touched && nuevaReservaForm.get('fechaLlegada')?.hasError('required')" class="text-danger">
+        La fecha de llegada es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaSalida">Fecha de Salida:</label>
+      <input type="date" id="fechaSalida" formControlName="fechaSalida" class="form-control">
+      <div *ngIf="nuevaReservaForm.get('fechaSalida')?.touched && nuevaReservaForm.get('fechaSalida')?.hasError('required')" class="text-danger">
+        La fecha de salida es obligatoria.
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="agregarReserva()">Agregar Reserva</button>
+  </form>
+</div>

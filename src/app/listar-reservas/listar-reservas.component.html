@@ -1,0 +1,33 @@
+<div class="container">
+  <app-agregar-reserva (nuevaReservaAgregada)="actualizarReservas()"></app-agregar-reserva>
+  <div>
+    <h1 class="my-4">Listado de Reservas</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre y Apellidos</th>
+          <th>Email</th>
+          <th>Tipo Cliente</th>
+          <th>Fecha de Llegada</th>
+          <th>Fecha de Salida</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reserva of reservas">
+          <td>{{ reserva.id }}</td>
+          <td>{{ reserva.nombre }}</td>
+          <td>{{ reserva.email }}</td>
+          <td>{{ reserva.tipoCliente }}</td>
+          <td>{{ reserva.fechaLlegada | date:'short' }}</td>
+          <td>{{ reserva.fechaSalida | date:'short' }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editarReserva(reserva)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminarReserva(reserva)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
